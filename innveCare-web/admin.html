@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F0F0F0;
+            color: #364F6B;
+            padding: 20px;
+        }
+        h1 {
+            color: #FC5185;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #364F6B;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #43DDE6;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel - Submitted Data</h1>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Age</th>
+                <th>National ID</th>
+                <th>Medical History</th>
+                <th>Genetic Mutation</th>
+                <th>Ethnicity</th>
+                <th>Biopsy</th>
+                <th>Menstrual Age</th>
+                <th>Birth Age</th>
+                <th>Family History</th>
+                <th>Menopause</th>
+                <th>Tumor Size</th>
+                <th>Inv-Nodes</th>
+                <th>Breast</th>
+                <th>Metastasis</th>
+                <th>Breast Quadrant</th>
+                <th>Family History Cancer</th>
+                <th>Diagnosis Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be populated here using JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Retrieve data from localStorage
+        const submittedData = JSON.parse(localStorage.getItem("submittedData")) || [];
+        const tableBody = document.querySelector("#dataTable tbody");
+
+        // Populate the table with data
+        submittedData.forEach(row => {
+            const tr = document.createElement("tr");
+            for (const key in row) {
+                const td = document.createElement("td");
+                td.textContent = row[key];
+                tr.appendChild(td);
+            }
+            tableBody.appendChild(tr);
+        });
+    </script>
+</body>
+</html>
